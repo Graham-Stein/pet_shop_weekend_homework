@@ -45,12 +45,29 @@ end
 
 def remove_pet_by_name(shop, pet_name)
   animals = shop[:pets]
-  count = 0
   for animal in animals
     if animal[:name] == pet_name
-      animals.delete_at(count)
-      break
+      animals.delete(animal)
     end
-    count += 1
   end
+end
+
+def add_pet_to_stock(shop, new_pet)
+  shop[:pets].push(new_pet)
+end
+
+def customer_cash(customer)
+  return customer[:cash]
+end
+
+def remove_customer_cash(customer, cash_out)
+  customer[:cash] -= cash_out
+end
+
+def customer_pet_count(customer)
+  customer[:pets].length
+end
+
+def add_pet_to_customer(customer, pet)
+  customer[:pets].push(pet)
 end
