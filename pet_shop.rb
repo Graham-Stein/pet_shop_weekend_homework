@@ -22,18 +22,23 @@ def stock_count(shop)
   shop[:pets].length
 end
 
-def pets_by_breed(shop,pet)
+def pets_by_breed(shop, pet)
   animals = shop[:pets]
-
   total = []
   for animal in animals
-    puts "#{animal} IN LOOP"
-    puts animal[:breed]
-    puts pet
     if animal[:breed] == pet
       total.push(animal)
     end
-    puts "#{total.count} IN ARRAY"
   end
   return total
+end
+
+def find_pet_by_name(shop, pet_name)
+  animals = shop[:pets]
+  for animal in animals
+    if animal[:name] == pet_name
+      return animal
+    end
+  end
+  return nil
 end
