@@ -71,3 +71,26 @@ end
 def add_pet_to_customer(customer, pet)
   customer[:pets].push(pet)
 end
+
+def customer_can_afford_pet(customer, new_pet)
+  price = new_pet[:price]
+  available_cash = customer[:cash]
+    if price <= available_cash
+      return true
+    else
+      return false
+    end
+end
+
+def sell_pet_to_customer(shop, pet, customer)
+  if customer_can_afford_pet(customer, pet) == true
+    add_pet_to_customer(customer, pet)
+    cash = pet[:price]
+    remove_customer_cash(customer, cash)
+    remove_pet_by_name(shop, pet[:name])
+    shop[:admin][:pets_sold] += 1
+    add_or_remove_cash(shop, cash)
+  else
+    return "Customer has insufficient funds."
+  end
+end
