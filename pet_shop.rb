@@ -83,20 +83,9 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
-  p "#{pet} PET Parameter
-  "
-  p "#{shop} SHOP
-  "
-  p "#{customer} CUSTOMER
-  "
-  # p customer_can_afford_pet(customer, pet)
-  p "#{nil} tsst NIL"
-  p "#{find_pet_by_name(shop, pet[:name])} PET Found"
-  # p "#{pet} PET IN Parameter"
-  if find_pet_by_name(shop, pet[:name]) == nil
-    return
-
-    elsif customer_can_afford_pet(customer, pet) == true && find_pet_by_name(shop, pet[:name]) == pet
+  if pet == nil
+    return "No such pet in stock"
+  elsif customer_can_afford_pet(customer, pet) == true
     add_pet_to_customer(customer, pet)
     cash = pet[:price]
     remove_customer_cash(customer, cash)
@@ -104,6 +93,6 @@ def sell_pet_to_customer(shop, pet, customer)
     shop[:admin][:pets_sold] += 1
     add_or_remove_cash(shop, cash)
   else
-    return "Customer has insufficient funds."
+    return "Customer has insufficient funds"
   end
 end
