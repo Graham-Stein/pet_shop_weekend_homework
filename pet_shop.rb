@@ -83,7 +83,20 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
-  if customer_can_afford_pet(customer, pet) == true
+  p "#{pet} PET Parameter
+  "
+  p "#{shop} SHOP
+  "
+  p "#{customer} CUSTOMER
+  "
+  # p customer_can_afford_pet(customer, pet)
+  p "#{nil} tsst NIL"
+  p "#{find_pet_by_name(shop, pet[:name])} PET Found"
+  # p "#{pet} PET IN Parameter"
+  if find_pet_by_name(shop, pet[:name]) == nil
+    return
+
+    elsif customer_can_afford_pet(customer, pet) == true && find_pet_by_name(shop, pet[:name]) == pet
     add_pet_to_customer(customer, pet)
     cash = pet[:price]
     remove_customer_cash(customer, cash)
