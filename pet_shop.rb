@@ -96,3 +96,36 @@ def sell_pet_to_customer(shop, pet, customer)
     return "Customer has insufficient funds"
   end
 end
+
+# Run the code if executed directly from shell
+# (equivalent to Java main method)
+if __FILE__ == $0
+
+  @pet_shop = {
+    pets: [
+      {
+        name: "Sir Percy",
+        pet_type: :cat,
+        breed: "British Shorthair",
+        price: 500
+      }
+    ],
+    admin: {
+      total_cash: 1000,
+      pets_sold: 0,
+    },
+    name: "Camelot of Pets"
+  }
+
+  puts "============================="
+  puts "Solid Ruby code + minitest"
+  puts "Nice work, good job"
+  puts "============================="
+  puts
+
+  puts pet_shop_name(@pet_shop)
+  puts "----------------"
+  puts "Pets in stock: " + stock_count(@pet_shop).to_s
+  puts "Pets sold: " + pets_sold(@pet_shop).to_s
+
+end #if __FILE__ == $0
